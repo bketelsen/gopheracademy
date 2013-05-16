@@ -20,6 +20,7 @@ type Job struct {
 	AdditionalInstructions string
 	PurchaserEmail         string
 	Approved               bool
+	created                string
 }
 
 func (job *Job) Validate(v *revel.Validation) {

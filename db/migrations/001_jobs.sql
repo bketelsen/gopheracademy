@@ -13,6 +13,7 @@ CREATE TABLE jobs (
     additionalinstructions text,
     purchaseremail varchar(255),
     approved bool,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );
 
