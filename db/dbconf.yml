@@ -1,3 +1,7 @@
 development:
     driver: mymysql
     open: ga_development/root/
+
+prod:
+    driver: mymysql
+    open: ga_production/root/
