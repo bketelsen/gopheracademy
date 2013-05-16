@@ -7,7 +7,7 @@
       <div class="masthead">
    <ul class="nav nav-pills pull-right">
           <li ><a href="/">Home</a></li>
-          <li class="active"><a href="#">#golang Jobs</a></li>
+          <li class="active"><a href="/jobs">#golang Jobs</a></li>
         </ul>
 
 
@@ -25,23 +25,26 @@
       <hr>
 
       <div class="row-fluid marketing">
-        <div class="span6">
-          <h4><a href="/jobs/find">Find a Job</a></h4>
-          <p>Search our listings of #golang jobs for free!</p>
+{{if .jobs}}
+<table class="table">
+ 
+    {{range .jobs}}
+    <tr>
+      <td><a href="/jobs/show/{{.Id}}"><h4>{{.Title}}</h4></a> <br/> at {{.CompanyName}}</td>
+      <td>{{.Location}}</td>
+    </tr>
+    {{end}}
+ </table>
+<p>
+  <a id="nextPage" href="{{.nextPage}}">More results</a>
+</p>
 
-          <h4><a href="/jobs/post">Post a Job</a></h4>
-          <p>Simplify your recruiting for top-notch #golang developers by posting on the only Go-dedicated job site.</p>
+{{else}}
+<p>
+  No more results
+</p>
+{{end}}
 
-        </div>
-
-        <div class="span6">
-          <h4>Dedicated to #golang Jobs</h4>
-          <p>Gopher Academy's Job Listings are 100% #golang.  No other job site can make this claim.</p>
-
-          <h4>Worldwide Reach</h4>
-          <p>Post or find #golang jobs around the world.</p>
-
-        </div>
       </div>
 
       <hr>

@@ -11,21 +11,37 @@ func (c Jobs) Index() revel.Result {
 	return c.Render()
 }
 
-func (c Jobs) Find() revel.Result {
-	return c.Render()
+func (c Jobs) Find(size, page int) revel.Result {
+	if page == 0 {
+		page = 1
+	}
+	if size == 0 {
+		size = 25
+	}
+	nextPage := page + 1
+
+	jobs, err := models.GetJobs(c.Txn, page, size)
+	if err != nil {
+		revel.ERROR.Println(err)
+	}
+
+	return c.Render(jobs, size, page, nextPage)
 }
 
 func (c Jobs) Post() revel.Result {
 	return c.Render()
 }
 
-func (c Jobs) Preview() revel.Result {
-	return c.Render()
+func (c Jobs) Show(id int) revel.Result {
+	job, err := models.GetJob(c.Txn, id)
+	if err != nil {
+		revel.ERROR.Println(err)
+	}
+	return c.Render(job)
 }
-func (c Jobs) Payment() revel.Result {
-	return c.Render()
-}
-func (c Jobs) Confirm() revel.Result {
+
+func (c Jobs) Confirm(id int) revel.Result {
+	models.ApproveJob(c.Txn, id)
 	return c.Render()
 }
 
@@ -39,6 +55,10 @@ func (c Jobs) HandlePostSubmit(job *models.Job) revel.Result {
 		return c.Redirect(Jobs.Post)
 	}
 
-	// Ok, display the created user
+	err := job.Save(c.Txn)
+	if err != nil {
+		revel.ERROR.Println(err)
+	}
+	// Ok, display the created job
 	return c.Render(job)
 }
