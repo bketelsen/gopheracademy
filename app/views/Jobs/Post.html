@@ -1,4 +1,4 @@
-{{set . "title" "Jobs"}}
+{{set . "title" "Submit A Job"}}
 {{template "header.html" .}}
 
 
@@ -13,37 +13,107 @@
 
         <h3 class="muted">Gopher Academy</h3>
       </div>
+<div class="page-header">
+  <h1>Post your job <small>Find a gopher!</small></h1>
+</div>
 
-      <hr>
+<ul class="breadcrumb">
+  <li class="active">Post<span class="divider">/</span></li>
+  <li>Preview <span class="divider">/</span></li>
+    <li>Payment<span class="divider">/</span></li>
+  <li>Confirm</li>
+</ul>
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="jobTitle">Job Title</label>
+    <div class="controls">
+      <input type="text" id="jobTitle" placeholder="Senior Gopher">
+    </div>
+  </div>
+    <div class="control-group">
+    <label class="control-label" for="jobLocation">Job Location</label>
+    <div class="controls">
+      <input type="text" id="jobLocation" placeholder="New York, Remote">
+    </div>
+  </div>
+      <div class="control-group">
+    <label class="control-label" for="jobType">Job Type</label>
+    <div class="controls">
+<label class="radio">
+  <input type="radio" name="optionsJobType" id="optionsJobTypeFt" value="fulltime" checked>
+  Full Time
+</label>
+<label class="radio">
+  <input type="radio" name="optionsJobType" id="optionsJobTypePt" value="parttime">
+  Part Time
+</label>
+<label class="radio">
+  <input type="radio" name="optionsJobType" id="optionsJobTypeFl" value="freelance">
+  Freelance
+</label>
+    </div>
+  </div>
+      <div class="control-group">
+    <label class="control-label" for="jobDescription">Job Description</label>
+    <div class="controls">
+     <textarea  cols="40" id="jobDescription" name="jobDescription" rows="10"></textarea>
+    </div>
+  </div>
+    <div class="control-group">
+    <label class="control-label" for="companyName">Company Name</label>
+    <div class="controls">
+      <input type="text" id="companyName" placeholder="">
+    </div>
+  </div>
 
-      <div class="jumbotron">
-        <h1>Put Go to Work</h1>
-        <p class="lead">Find your dream job writing #golang.</p>
-        <p class="lead">...coming soon...</p>
-      </div>
+  <div class="control-group">
+    <label class="control-label" for="companyWebsite">Company Website</label>
+    <div class="controls">
+      <input type="text" id="companyWebsite" placeholder="">
+    </div>
+  </div>
+    <div class="control-group">
+    <label class="control-label" for="companyLogoURL">Company Logo URL</label>
+    <div class="controls">
+      <input type="text" id="companyLogoURL" placeholder="">
+    </div>
+  </div>
 
-      <hr>
+    <div class="control-group">
+    <label class="control-label" for="applyURL">Apply URL</label>
+    <div class="controls">
+      <input type="text" id="applyURL" placeholder="http://mycompany.com/jobs/1234">
+    </div>
+  </div>
+    <div class="control-group">
+    <label class="control-label" for="applyEmail">Apply by Email</label>
+    <div class="controls">
+      <input type="text" id="applyEmail" placeholder="recruiting@yourcompany.com">
+    </div>
+  </div>
+      <div class="control-group">
+    <label class="control-label" for="additionalInstructions">Additional Instructions</label>
+    <div class="controls">
+     <textarea  cols="40" id="additionalInstructions" name="additionalInstructions" rows="10"></textarea>
+    </div>
+  </div>
+    <div class="control-group">
+    <label class="control-label" for="purchaserEmail">Purchaser Email</label>
+    <div class="controls">
+      <input type="text" id="purchaserEmail" placeholder="recruiting@yourcompany.com">
+    </div>
+  </div>
 
-      <div class="row-fluid marketing">
-        <div class="span6">
-          <h4><a href="/jobs/find">Find a Job</a></h4>
-          <p>Search our listings of #golang jobs for free!</p>
 
-          <h4><a href="/jobs/post">Post a Job</a></h4>
-          <p>Simplify your recruiting for top-notch #golang developers by posting on the only Go-dedicated job site.</p>
+  <div class="control-group">
+    <div class="controls">
 
-        </div>
-
-        <div class="span6">
-          <h4>Dedicated to #golang Jobs</h4>
-          <p>Gopher Academy's Job Listings are 100% #golang.  No other job site can make this claim.</p>
-
-          <h4>Worldwide Reach</h4>
-          <p>Post or find #golang jobs around the world.</p>
-
-        </div>
-      </div>
-
+      <button type="submit" class="btn">Preview</button>
+    </div>
+  </div>
+</form>
+      
+      
       <hr>
 
    
