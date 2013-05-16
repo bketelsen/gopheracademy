@@ -23,87 +23,147 @@
     <li>Payment<span class="divider">/</span></li>
   <li>Confirm</li>
 </ul>
-<form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label" for="jobTitle">Job Title</label>
+<form class="form-horizontal" action="{{url "Jobs.HandlePostSubmit"}}" method="POST">
+      {{with $field := field "job.Title" .}}
+  <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Job Title</label>
     <div class="controls">
-      <input type="text" id="jobTitle" placeholder="Senior Gopher">
+              <div class="input-prepend">
+      <span class="add-on"><i class="icon-pencil"></i></span>
+      <input class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="Senior Gopher" required>
     </div>
+      <span class="help-inline">{{$field.Error}}</span>
+    </div>
+        {{end}}
   </div>
-    <div class="control-group">
-    <label class="control-label" for="jobLocation">Job Location</label>
+        {{with $field := field "job.Location" .}}
+    <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Job Location</label>
     <div class="controls">
-      <input type="text" id="jobLocation" placeholder="New York, Remote">
+                          <div class="input-prepend">
+      <span class="add-on"><i class="icon-circle-arrow-down"></i></span>
+      <input  class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="New York, Remote" required>
+     
+      <span class="help-inline">{{$field.Error}}</span>
     </div>
+    {{end}}
   </div>
+          {{with $field := field "job.JobType" .}}
       <div class="control-group">
-    <label class="control-label" for="jobType">Job Type</label>
+    <label class="control-label" for="{{$field.Id}}">Job Type</label>
     <div class="controls">
 <label class="radio">
-  <input type="radio" name="optionsJobType" id="optionsJobTypeFt" value="fulltime" checked>
+  <input type="radio" id="{{$field.Id}}" name="{{$field.Name}}" value="1" checked>
   Full Time
 </label>
 <label class="radio">
-  <input type="radio" name="optionsJobType" id="optionsJobTypePt" value="parttime">
+  <input type="radio" id="{{$field.Id}}" name="{{$field.Name}}" value="2">
   Part Time
 </label>
 <label class="radio">
-  <input type="radio" name="optionsJobType" id="optionsJobTypeFl" value="freelance">
+  <input type="radio" id="{{$field.Id}}" name="{{$field.Name}}" value="3">
   Freelance
 </label>
     </div>
+    {{end}}
   </div>
+            {{with $field := field "job.Description" .}}
+      <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Job Description</label>
+    <div class="controls">
+                    <div class="input-prepend">
+      <span class="add-on"><i class="icon-pencil"></i></span>
+     <textarea  class="input-xlarge" cols="40" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" rows="10" required>{{$field.Flash}}</textarea>
+   </div>
+      <span class="help-inline">{{$field.Error}}</span>
+    </div>
+  </div>
+  {{end}}
+              {{with $field := field "job.CompanyName" .}}
+    <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Company Name</label>
+    <div class="controls">
+                    <div class="input-prepend">
+      <span class="add-on"><i class="icon-pencil"></i></span>
+      <input class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="" required>
+    </div>
+      <span class="help-inline">{{$field.Error}}</span>
+    </div>
+  </div>
+  {{end}}
+              {{with $field := field "job.CompanyWebsite" .}}
+  <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Company Website</label>
+    <div class="controls">
+                    <div class="input-prepend">
+      <span class="add-on"><i class="icon-home"></i></span>
+      <input class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="" required>
+    </div>
+      <span class="help-inline">{{$field.Error}}</span>
+    </div>
+  </div>
+  {{end}}
+
+                {{with $field := field "job.CompanyLogoURL" .}}
+    <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Company Logo URL</label>
+    <div class="controls">
+
+              <div class="input-prepend">
+      <span class="add-on"><i class="icon-file"></i></span>
+      <input class="input-xlarge" type="text"  id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}"  placeholder="" required>
+    </div>
+      <span class="help-inline">{{$field.Error}}</span>
+       </div>
+  </div>
+{{end}}
+
+
+   {{with $field := field "job.ApplyURL" .}}
+    <div class="control-group">
+    <label class="control-label" for="{{$field.Id}}">Apply URL</label>
+    <div class="controls">
+              <div class="input-prepend">
+      <span class="add-on"><i class="icon-home"></i></span>
+      <input  class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="http://mycompany.com/jobs/1234">
+    </div>
+    </div>
+  </div>
+  {{end}}
+                {{with $field := field "job.ApplyEmail" .}}
+    <div class="control-group">
+    <label class="control-label" for="{{$field.Id}}">Apply by Email</label>
+    <div class="controls">
+          <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <input class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="recruiting@yourcompany.com">
+    </div>
+  </div>
+  </div>
+  {{end}}
+     {{with $field := field "job.AdditionalInstructions" .}}
       <div class="control-group">
-    <label class="control-label" for="jobDescription">Job Description</label>
+    <label class="control-label" for="{{$field.Id}}">Additional Instructions</label>
     <div class="controls">
-     <textarea  cols="40" id="jobDescription" name="jobDescription" rows="10"></textarea>
+              <div class="input-prepend">
+      <span class="add-on"><i class="icon-pencil"></i></span>
+     <textarea class="input-xlarge" cols="40" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" rows="10"></textarea>
+   </div>
     </div>
   </div>
-    <div class="control-group">
-    <label class="control-label" for="companyName">Company Name</label>
+  {{end}}
+       {{with $field := field "job.PurchaserEmail" .}}
+    <div class="control-group" error>
+    <label class="control-label" for="{{$field.Id}}">Purchaser Email</label>
     <div class="controls">
-      <input type="text" id="companyName" placeholder="">
+        <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <input class="input-xlarge" type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" placeholder="recruiting@yourcompany.com" required>
+    </div>
+      <span class="help-inline">{{$field.Error}}</span>
     </div>
   </div>
-
-  <div class="control-group">
-    <label class="control-label" for="companyWebsite">Company Website</label>
-    <div class="controls">
-      <input type="text" id="companyWebsite" placeholder="">
-    </div>
-  </div>
-    <div class="control-group">
-    <label class="control-label" for="companyLogoURL">Company Logo URL</label>
-    <div class="controls">
-      <input type="text" id="companyLogoURL" placeholder="">
-    </div>
-  </div>
-
-    <div class="control-group">
-    <label class="control-label" for="applyURL">Apply URL</label>
-    <div class="controls">
-      <input type="text" id="applyURL" placeholder="http://mycompany.com/jobs/1234">
-    </div>
-  </div>
-    <div class="control-group">
-    <label class="control-label" for="applyEmail">Apply by Email</label>
-    <div class="controls">
-      <input type="text" id="applyEmail" placeholder="recruiting@yourcompany.com">
-    </div>
-  </div>
-      <div class="control-group">
-    <label class="control-label" for="additionalInstructions">Additional Instructions</label>
-    <div class="controls">
-     <textarea  cols="40" id="additionalInstructions" name="additionalInstructions" rows="10"></textarea>
-    </div>
-  </div>
-    <div class="control-group">
-    <label class="control-label" for="purchaserEmail">Purchaser Email</label>
-    <div class="controls">
-      <input type="text" id="purchaserEmail" placeholder="recruiting@yourcompany.com">
-    </div>
-  </div>
-
+{{end}}
 
   <div class="control-group">
     <div class="controls">
