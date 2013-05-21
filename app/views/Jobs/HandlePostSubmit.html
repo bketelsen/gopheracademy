@@ -36,7 +36,11 @@
 </div>
 <div class="row-fluid">
   <div class="span4"><h4>Job Type:</h4></div>
-  <div class="span8"><h4>{{.job.JobType}}</h4></div>
+  <div class="span8"><h4>
+    {{if eq .job.JobType  1}} Full Time {{end}}
+    {{if eq .job.JobType  2}} Part Time {{end}}
+    {{if eq .job.JobType  3}} Freelance{{end}}
+  </h4></div>
 </div>
 <div class="row-fluid">
   <div class="span4"><h4>Job Description:</h4></div>
