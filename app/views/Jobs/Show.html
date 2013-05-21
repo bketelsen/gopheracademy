@@ -22,42 +22,42 @@
 <img src="{{.job.CompanyLogoURL}}"></img><h2>{{.job.Title}}</h2>
 <hr/>
 <div class="row-fluid">
-  <div class="span4"><h4>Company Name:</h4></div>
+  <div class="span4"><h4><p class="text-right">Company Name:</p></h4></div>
   <div class="span8"><h4>{{.job.CompanyName}}</h4></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Location:</h4></div>
+  <div class="span4"><h4><p class="text-right">Location:</p></h4></div>
   <div class="span8"><h4>{{.job.Location}}</h4></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Job Type:</h4></div>
+  <div class="span4"><h4><p class="text-right">Job Type:</p></h4></div>
   <div class="span8"><h4>{{.job.JobType}}</h4></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Job Description:</h4></div>
+  <div class="span4"><h4><p class="text-right">Job Description:</p></h4></div>
   <div class="span8"><p>{{.job.Description}}</p></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Company Website:</h4></div>
+  <div class="span4"><h4><p class="text-right">Company Website:</p></h4></div>
   <div class="span8"><h4>{{.job.CompanyWebsite}}</h4></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Additional Instructions:</h4></div>
+  <div class="span4"><h4><p class="text-right">Additional Instructions:</p></h4></div>
   <div class="span8"><p>{{.job.AdditionalInstructions}}</p></div>
 </div>
 {{ if .job.ApplyURL}}
 <div class="row-fluid">
-  <div class="span4"><h4>Apply Online:</h4></div>
-  <div class="span8"><h4><a href="{{.job.ApplyURL}}" target="_blank">{{.job.CompanyName}}</a> </h4></div>
+  <div class="span4"><h4><p class="text-right">Apply Online:</p></h4></div>
+  <div class="span8"><h4><a href="{{.job.ApplyURL}}" target="_blank">{{.job.CompanyName}} Website</a> </h4></div>
 </div>
 {{end}}
 <div class="row-fluid">
-  <div class="span4"><h4>Apply by Email:</h4></div>
+  <div class="span4"><h4><p class="text-right">Apply by Email:</p></h4></div>
   <div class="span8"><h4><a href="mailto:{{.job.ApplyEmail}}?subject=Application for {{.job.Title}}&body=Please attach a resume and replace this text.">Send Email</a></h4></div>
 </div>
 <div class="row-fluid">
-  <div class="span4"><h4>Posted By:</h4></div>
-  <div class="span8"><h4>{{.job.PurchaserEmail}}</h4></div>
+  <div class="span4"><h4><p class="text-right">Posted On:</p></h4></div>
+  <div class="span8"><h4>{{.job.Created}}</h4></div>
 </div>
 <hr/>
 {{template "footer.html" .}}

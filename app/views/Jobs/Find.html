@@ -31,7 +31,7 @@
     {{range .jobs}}
     <tr>
       <td><a href="/jobs/show/{{.Id}}"><h4>{{.Title}}</h4></a> <br/> at {{.CompanyName}}</td>
-      <td>{{.Location}}</td>
+      <td><p class="text-right">{{.Location}}</p><br/><p class="text-right"> Posted {{.Created}}</p></td>
     </tr>
     {{end}}
  </table>

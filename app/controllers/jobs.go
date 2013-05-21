@@ -37,12 +37,13 @@ func (c Jobs) Show(id int) revel.Result {
 	if err != nil {
 		revel.ERROR.Println(err)
 	}
+	revel.ERROR.Println(job)
 	return c.Render(job)
 }
 
 func (c Jobs) Confirm(id int) revel.Result {
 	models.ApproveJob(c.Txn, id)
-	return c.Render()
+	return c.Render(id)
 }
 
 func (c Jobs) HandlePostSubmit(job *models.Job) revel.Result {

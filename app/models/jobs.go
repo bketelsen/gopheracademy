@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/robfig/revel"
+	"time"
 )
 
 type Job struct {
@@ -20,7 +21,7 @@ type Job struct {
 	AdditionalInstructions string
 	PurchaserEmail         string
 	Approved               bool
-	created                string
+	Created                string
 }
 
 func (job *Job) Validate(v *revel.Validation) {
@@ -82,7 +83,7 @@ func ApproveJob(txn *sql.Tx, id int) (e error) {
 }
 func GetJob(txn *sql.Tx, id int) (job *Job, e error) {
 
-	rows, e := txn.Query("select id,title, location, jobtype, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail  from jobs where id=?", id)
+	rows, e := txn.Query("select id,title, location, jobtype, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail,created  from jobs where id=?", id)
 	if e != nil {
 		revel.ERROR.Println(e)
 		return job, e
@@ -91,10 +92,21 @@ func GetJob(txn *sql.Tx, id int) (job *Job, e error) {
 	for rows.Next() {
 
 		var id, jobtype int
-		var title, location, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail string
-		if e := rows.Scan(&id, &title, &location, &jobtype, &description, &companyname, &companywebsite, &companylogourl, &applyurl, &applyemail, &additionalinstructions, &purchaseremail); e != nil {
+		var title, location, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail, created string
+		if e := rows.Scan(&id, &title, &location, &jobtype, &description, &companyname, &companywebsite, &companylogourl, &applyurl, &applyemail, &additionalinstructions, &purchaseremail, &created); e != nil {
 			revel.ERROR.Println(e)
 		}
+		revel.ERROR.Println(created)
+
+		var parsedDate time.Time
+		parsedDate, err := time.Parse("2006-01-02 15:04:05", created)
+
+		if err != nil {
+			parsedDate, _ = time.Parse("2006-01-02 15:04:05 MST", "January 1, 2013")
+
+		}
+
+		formattedDate := parsedDate.Format("2006-01-02")
 
 		job = &Job{
 			Id:                     id,
@@ -109,6 +121,7 @@ func GetJob(txn *sql.Tx, id int) (job *Job, e error) {
 			ApplyEmail:             applyemail,
 			AdditionalInstructions: additionalinstructions,
 			PurchaserEmail:         purchaseremail,
+			Created:                formattedDate,
 		}
 
 	}
@@ -121,7 +134,7 @@ func GetJob(txn *sql.Tx, id int) (job *Job, e error) {
 
 func GetJobs(txn *sql.Tx, page, size int) (jobs []*Job, e error) {
 
-	rows, e := txn.Query("select id,title, location, jobtype, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail  from jobs where approved=1 limit ?, ?", (page-1)*size, size)
+	rows, e := txn.Query("select id,title, location, jobtype, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail,created  from jobs where approved=1 limit ?, ?", (page-1)*size, size)
 	if e != nil {
 		revel.ERROR.Println(e)
 		return jobs, e
@@ -130,10 +143,20 @@ func GetJobs(txn *sql.Tx, page, size int) (jobs []*Job, e error) {
 	for rows.Next() {
 
 		var id, jobtype int
-		var title, location, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail string
-		if e := rows.Scan(&id, &title, &location, &jobtype, &description, &companyname, &companywebsite, &companylogourl, &applyurl, &applyemail, &additionalinstructions, &purchaseremail); e != nil {
+		var title, location, description, companyname, companywebsite, companylogourl, applyurl, applyemail, additionalinstructions, purchaseremail, created string
+		if e := rows.Scan(&id, &title, &location, &jobtype, &description, &companyname, &companywebsite, &companylogourl, &applyurl, &applyemail, &additionalinstructions, &purchaseremail, &created); e != nil {
 			revel.ERROR.Println(e)
 		}
+
+		var parsedDate time.Time
+		parsedDate, err := time.Parse("2006-01-02 15:04:05", created)
+
+		if err != nil {
+			parsedDate, _ = time.Parse("2006-01-02 15:04:05 MST", "January 1, 2013")
+
+		}
+
+		formattedDate := parsedDate.Format("2006-01-02")
 
 		job := &Job{
 			Id:                     id,
@@ -148,6 +171,7 @@ func GetJobs(txn *sql.Tx, page, size int) (jobs []*Job, e error) {
 			ApplyEmail:             applyemail,
 			AdditionalInstructions: additionalinstructions,
 			PurchaserEmail:         purchaseremail,
+			Created:                formattedDate,
 		}
 
 		jobs = append(jobs, job)
