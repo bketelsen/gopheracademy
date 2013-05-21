@@ -19,14 +19,13 @@
       <div class="jumbotron">
         <h1>Put Go to Work</h1>
         <p class="lead">Find your dream job writing #golang.</p>
-        <p class="lead">...coming soon...</p>
       </div>
 
       <hr>
 
       <div class="row-fluid marketing">
 {{if .jobs}}
-<table class="table">
+<table class="table table-striped">
  
     {{range .jobs}}
     <tr>
@@ -36,7 +35,7 @@
     {{end}}
  </table>
 <p>
-  <a id="nextPage" href="{{.nextPage}}">More results</a>
+  <a id="nextPage" href="/jobs/find?page={{.nextPage}}">More results</a>
 </p>
 
 {{else}}

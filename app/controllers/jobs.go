@@ -16,7 +16,7 @@ func (c Jobs) Find(size, page int) revel.Result {
 		page = 1
 	}
 	if size == 0 {
-		size = 25
+		size = 5
 	}
 	nextPage := page + 1
 
