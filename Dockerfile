@@ -28,7 +28,8 @@ RUN apt-get install -y -q build-essential
 RUN apt-get install -y -q g++
 
 # GVM
-RUN apt-get install -y -q mercurial
+RUN apt-get install -y -q python-setuptools python-dev build-essential
+RUN easy_install -U mercurial
 RUN apt-get install -y -q bison
 RUN apt-get install -y -q binutils
 RUN apt-get install -y -q gcc
