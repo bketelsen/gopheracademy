@@ -37,4 +37,5 @@ RUN curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer |
 RUN bash -c "source $HOME/.gvm/scripts/gvm && gvm install go1.1.1"
 RUN bash -c "source $HOME/.gvm/scripts/gvm && gvm use go1.1.1"
 
+CMD /bin/bash
 ENV DEBIAN_FRONTEND dialog
