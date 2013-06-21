@@ -4,7 +4,6 @@ FROM ubuntu:12.04
 # REPOS
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
-RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN add-apt-repository -y ppa:gophers/go/ubuntu
 RUN apt-get -y update
 
