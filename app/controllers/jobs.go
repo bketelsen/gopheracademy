@@ -4,7 +4,8 @@ import "github.com/robfig/revel"
 import "gopheracademy/app/models"
 
 type Jobs struct {
-	*revel.Controller
+
+	Transactional
 }
 
 func (c Jobs) Index() revel.Result {
