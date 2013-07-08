@@ -11,6 +11,7 @@ import (
         "unicode/utf8"
         "fmt"
               "net/url"
+              "strconv"
 
 )
 
@@ -19,6 +20,7 @@ func init() {
 	revel.TemplateFuncs["sectioned"] = sectioned
 		revel.TemplateFuncs["elem"] = renderElem
 		revel.TemplateFuncs["style"] = Style
+        revel.TemplateFuncs["image"] = parseImage
 
 }
 
@@ -244,4 +246,61 @@ func parseInlineLink(s string) (link string, length int) {
         }
         text := s[urlEnd+2 : end]
         return renderLink(url, text), end + 2
+}
+
+type Image struct {
+        URL    string
+        Width  int
+        Height int
+}
+
+func (i Image) TemplateName() string { return "image" }
+
+func parseImage(ctx *present.Context, fileName string, lineno int, text string) (present.Elem, error) {
+        args := strings.Fields(text)
+        img := Image{URL: args[1]}
+        a, err := parseArgs(fileName, lineno, args[2:])
+        if err != nil {
+                return nil, err
+        }
+        switch len(a) {
+        case 0:
+                // no size parameters
+        case 2:
+                if v, ok := a[0].(int); ok {
+                        img.Height = v
+                }
+                if v, ok := a[1].(int); ok {
+                        img.Width = v
+                }
+        default:
+                return nil, fmt.Errorf("incorrect image invocation: %q", text)
+        }
+        return img, nil
+}
+func parseArgs(name string, line int, args []string) (res []interface{}, err error) {
+        res = make([]interface{}, len(args))
+        for i, v := range args {
+                if len(v) == 0 {
+                        return nil, fmt.Errorf("%s:%d bad code argument %q", name, line, v)
+                }
+                switch v[0] {
+                case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+                        n, err := strconv.Atoi(v)
+                        if err != nil {
+                                return nil, fmt.Errorf("%s:%d bad code argument %q", name, line, v)
+                        }
+                        res[i] = n
+                case '/':
+                        if len(v) < 2 || v[len(v)-1] != '/' {
+                                return nil, fmt.Errorf("%s:%d bad code argument %q", name, line, v)
+                        }
+                        res[i] = v
+                case '$':
+                        res[i] = "$"
+                default:
+                        return nil, fmt.Errorf("%s:%d bad code argument %q", name, line, v)
+                }
+        }
+        return
 }

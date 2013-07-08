@@ -38,6 +38,7 @@ func (c Blog) Index() revel.Result {
 	return c.Render()
 }
 func (c Blog) Show(id string) revel.Result {
+			revel.ERROR.Println("Came for " + id)
 	var err error
 	p := present.Template().Funcs(funcMap)
 	tmpth := path.Join(revel.ViewsPath, "Blog")
