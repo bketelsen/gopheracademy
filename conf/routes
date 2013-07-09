@@ -8,8 +8,6 @@ GET		/jobs/find									Jobs.Find
 GET		/jobs/post									Jobs.Post
 POST    /jobs/:id                    				Jobs.Confirm
 GET    /jobs/show/:id               				Jobs.Show
-GET		/blog										Blog.Index
-GET		/blog/:id 									Blog.Show
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
