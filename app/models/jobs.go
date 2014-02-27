@@ -2,9 +2,10 @@ package models
 
 import (
 	"database/sql"
+	"time"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/robfig/revel"
-	"time"
 )
 
 type Job struct {
