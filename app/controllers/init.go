@@ -6,6 +6,4 @@ import (
 
 func init() {
 	revel.OnAppStart(InitDB)
-
-
 }

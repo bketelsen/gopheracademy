@@ -1,6 +1,8 @@
 package controllers
 
-import "github.com/robfig/revel"
+import (
+	"github.com/robfig/revel"
+)
 
 type Newsletter struct {
 	*revel.Controller

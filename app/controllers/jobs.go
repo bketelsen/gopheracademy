@@ -1,10 +1,12 @@
 package controllers
 
-import "github.com/robfig/revel"
-import "gopheracademy/app/models"
+import (
+	"github.com/bketelsen/gopheracademy/app/models"
+
+	"github.com/robfig/revel"
+)
 
 type Jobs struct {
-
 	Transactional
 }
 
