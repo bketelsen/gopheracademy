@@ -5,7 +5,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 )
 
 type Job struct {

@@ -13,7 +13,7 @@ git clone git@github.com:bketelsen/gopheracademy.git
 
 ```
 cd $GOPATH/github.com/bketelsen/gopheracademy
-go get github.com/robfig/revel/revel
+go get github.com/revel/revel/revel
 revel run github.com/bketelsen/gopheracademy
 ```
 

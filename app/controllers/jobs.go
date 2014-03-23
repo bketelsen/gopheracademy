@@ -3,7 +3,7 @@ package controllers
 import (
 	"github.com/bketelsen/gopheracademy/app/models"
 
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 )
 
 type Jobs struct {

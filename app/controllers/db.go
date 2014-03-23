@@ -12,7 +12,7 @@ package controllers
 import (
 	"database/sql"
 
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 )
 
 var (

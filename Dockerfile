@@ -10,8 +10,8 @@ ENV PATH  /go/bin:/usr/local/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr
 ENV GOPATH  /go
 ENV GOROOT  /usr/local/go
 
-RUN go get github.com/robfig/revel
-RUN go get github.com/robfig/revel/revel
+RUN go get github.com/revel/revel
+RUN go get github.com/revel/revel/revel
 
 ADD . /go/github.com/bketelsen/gopheracademy
 
