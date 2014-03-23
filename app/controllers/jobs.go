@@ -7,7 +7,7 @@ import (
 )
 
 type Jobs struct {
-	Transactional
+	*revel.Controller
 }
 
 func (c Jobs) Index() revel.Result {

@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                                    	   Application.Index
+GET    /    Application.Index
 GET		/jobs										Jobs.Index
 GET		/jobs/find									Jobs.Find
 GET		/jobs/post									Jobs.Post
@@ -17,4 +17,3 @@ GET    /public/*filepath            Static.Serve("public")
 
 # Catch all
 *       /:controller/:action                  :controller.:action
-
