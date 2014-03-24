@@ -7,7 +7,7 @@
       <div class="masthead">
    <ul class="nav nav-pills pull-right">
           <li ><a href="/">Home</a></li>
-          <li class="active"><a href="/jobs">#golang Jobs</a></li>
+          <li class="active"><a href="/gojobs">#golang Jobs</a></li>
           <li ><a href="http://blog.gopheracademy.com">Blog</a></li>
         </ul>
 
@@ -25,19 +25,17 @@
       <hr>
 
       <div class="row-fluid marketing">
-{{if .jobs}}
+{{if .Joblist}}
 <table class="table table-striped">
  
-    {{range .jobs}}
+    {{range .Joblist}}
     <tr>
-      <td><a href="/jobs/show/{{.Id}}"><h4>{{.Title}}</h4></a> <br/> at {{.CompanyName}}</td>
-      <td><p class="text-right">Location: {{.Location}}</p><br/><p class="text-right"> Posted: {{.Created}}</p></td>
+      <td><a href="/gojobs/show/{{.Id}}"><h4>{{.Title}}</h4></a> <br/> at {{.CompanyName}}</td>
+      <td><p class="text-right">Location: {{.Location}}</p><br/></td>
     </tr>
     {{end}}
  </table>
-<p>
-  <a id="nextPage" href="/jobs/find?page={{.nextPage}}">More results</a>
-</p>
+
 
 {{else}}
 <p>

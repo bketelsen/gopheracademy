@@ -1,0 +1,49 @@
+{{set . "title" "Preview Your Job"}}
+{{template "header.html" .}}
+
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+   <ul class="nav nav-pills pull-right">
+          <li ><a href="/">Home</a></li>
+          <li class="active"><a href="/gojobs">#golang Jobs</a></li>
+          <li ><a href="http://blog.gopheracademy.com">Blog</a></li>
+        </ul>
+
+        <h3 class="muted">Gopher Academy</h3>
+      </div>
+<div class="page-header">
+  <h1>Your next job <small>Here are the details...</small></h1>
+</div>
+
+
+
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">Company Name:</p></h4></div>
+  <div class="span8"><h4>{{.job.CompanyName}}</h4></div>
+</div>
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">Location:</p></h4></div>
+  <div class="span8"><h4>{{.job.Location}}</h4></div>
+</div>
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">Job Description:</p></h4></div>
+  <div class="span8"><p>{{nl2br .job.Description}}</p></div>
+</div>
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">Company Website:</p></h4></div>
+  <div class="span8"><h4><a href="{{.job.CompanyWebsite}}">{{.job.CompanyName}}</a></h4></div>
+</div>
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">Job Requirements:</p></h4></div>
+  <div class="span8"><p>{{nl2br .job.Requirements}}</p></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span4"><h4><p class="text-right">More Information:</p></h4></div>
+  <div class="span8"><h4><a href="{{.job.MoreInfoURL}}" target="_blank">GolangJobs.com Posting</a> </h4></div>
+</div>
+
+<hr/>
+{{template "footer.html" .}}

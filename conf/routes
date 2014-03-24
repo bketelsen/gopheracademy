@@ -1,11 +1,12 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+module:jobs
 
 GET    /    Application.Index
-GET		/jobs										Jobs.Index
-GET		/jobs/find									Jobs.Find
-GET    /jobs/show/:id               				Jobs.Show
+GET		/gojobs										GoJobs.Index
+GET		/gojobs/find									GoJobs.Find
+GET    /gojobs/show/:id               				GoJobs.Show
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -15,3 +16,4 @@ GET    /public/*filepath            Static.Serve("public")
 
 # Catch all
 *       /:controller/:action                  :controller.:action
+
