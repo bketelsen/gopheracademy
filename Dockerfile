@@ -11,9 +11,9 @@ ENV GOPATH  /go
 ENV GOROOT  /usr/local/go
 
 RUN go get github.com/revel/revel
-RUN go get github.com/revel/revel/revel
+RUN go get github.com/revel/cmd/revel
 
-ADD . /go/github.com/bketelsen/gopheracademy
+ADD . /go/src/github.com/bketelsen/gopheracademy
 
 EXPOSE 9000
 

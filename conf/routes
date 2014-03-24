@@ -5,8 +5,6 @@
 GET    /    Application.Index
 GET		/jobs										Jobs.Index
 GET		/jobs/find									Jobs.Find
-GET		/jobs/post									Jobs.Post
-POST    /jobs/:id                    				Jobs.Confirm
 GET    /jobs/show/:id               				Jobs.Show
 
 # Ignore favicon requests
