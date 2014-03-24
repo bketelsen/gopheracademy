@@ -15,6 +15,6 @@ RUN go get github.com/revel/cmd/revel
 
 ADD . /go/src/github.com/bketelsen/gopheracademy
 
-EXPOSE 9000
+EXPOSE 9001
 
 CMD revel run github.com/bketelsen/gopheracademy prod
